@@ -68,7 +68,7 @@ function ContactItem({ login, name, department }) {
   
   return (
     <li className="item">
-      <ViewItem { login }/>
+      <ViewItem login={login} />
       <div className="content">
         <h4 className="header">{name}</h4>
         <div className="description">{department}</div>
@@ -81,12 +81,13 @@ function ViewItem({ login }) {
 const imgUrl = `https://api.adorable.io/avatars/55/${login}.png`;
  return (
 <img src={imgUrl} className="ui mini rounded image" />
+);
 }
   
 ReactDOM.render(<App />, document.getElementById("app"));
+
+
+
 </script>
-
-
-
 </body>
 </html>
