@@ -45,12 +45,12 @@ function ContactsList() {
   return (
     <ul className="ui relaxed divided list selection">
       <ContactItem
-        login="typeofweb1"
+        login="typeofweb1@"
         name="Lena"
         department="JavaScript Developer"
       />
       <ContactItem
-        login="typeofweb2"
+        login="typeofweb2@"
         name="Brian"
         department="Human Resources"
       />
@@ -77,7 +77,13 @@ function ContactItem({ login, name, department }) {
 }
 
 function ViewItem({ login }) {
-const imgUrl = `https://api.adorable.io/avatars/55/${login}.png`;
+let imgUrl =''
+if (login.indexOf('@') != -1) {
+ imgUrl = `https://api.adorable.io/avatars/55/${login}.png`;
+}
+else {
+imgUrl = `https://api.adorable.io/avatars/55/abc.png`;
+}
  return (
 <img src={imgUrl} className="ui mini rounded image" />
 );
