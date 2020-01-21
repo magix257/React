@@ -15,28 +15,40 @@
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {counter: 0};
+    this.state = {counter: 0, counter2: 0, counter3: 0};
+	
   }
   
   render() {
     return (
       <div>
         <button onClick={this.increment.bind(this)}>+</button>
-        <output>{this.state.counter}</output>
+        <output onDoubleClick={this.increment2.bind(this)}>{this.state.counter}</output>
+		<output>{this.state.counter2}</output>
         <button onClick={this.decrement.bind(this)}>-</button>
+		<output>{this.state.counter3}</output>
       </div>
     );
   }
   
   increment() {
     this.setState({
-      counter: this.state.counter + 1
+      	counter: this.state.counter + 1,
+		counter2: this.state.counter2 + 1,
+		
+    })
+  }
+
+ increment2() {
+    this.setState({
+		counter3: this.state.counter3 + 1
     })
   }
   
   decrement() {
     this.setState({
-      counter: this.state.counter - 1
+      counter: this.state.counter - 1,
+	  counter2: this.state.counter2 + 1
     })
   }
 }
