@@ -12,7 +12,8 @@
 <div id="app"></div>
 <script type="text/babel">
 
-function App() {
+class App extends React.Component {
+render(){
   return (
     <div>
       <AppHeader />
@@ -22,13 +23,19 @@ function App() {
     </div>
   );
 }
+}
 
-function AppHeader() {
+function onClickHandler() {
+   console.log('Kliknięto!');
+}
+
+class AppHeader extends React.Component {
+render(){
   return (
     <div>
       <header className="ui menu">
         <nav className="ui container">
-    		<a href="#" className="header item">
+    		<a href="#"  className="header item" onLoad={onClickHandler}>
       		<img className="logo" src="https://typeofweb.com/wp-content/uploads/2017/08/cropped-typeofweb_logo-04-white-smaller-1-e1504359870362.png" />
       		Lista kontaktów
     		</a>
@@ -40,8 +47,13 @@ function AppHeader() {
     </div>
   );
 }
+}
 
-function ContactsList() {
+
+
+
+class ContactsList extends React.Component {
+render(){
   return (
     <ul className="ui relaxed divided list selection">
       <ContactItem
@@ -62,9 +74,11 @@ function ContactsList() {
     </ul>
   );
 }
+}
 
-function ContactItem({ login, name, department }) {
-  
+class ContactItem extends React.Component {
+render(){
+  const { login, name, department } = this.props
   return (
     <li className="item">
       <ViewItem login={login} />
@@ -75,18 +89,22 @@ function ContactItem({ login, name, department }) {
     </li>
   );
 }
+}
 
-function ViewItem({ login }) {
+class ViewItem extends React.Component {
+render(){
+const { login } = this.props
 let imgUrl =''
 if (login.indexOf('@') != -1) {
  imgUrl = `https://api.adorable.io/avatars/55/${login}.png`;
 }
 else {
-imgUrl = `https://api.adorable.io/avatars/55/abc.png`;
+ imgUrl = `https://api.adorable.io/avatars/55/abc.png`;
 }
  return (
 <img src={imgUrl} className="ui mini rounded image" />
 );
+}
 }
   
 ReactDOM.render(<App />, document.getElementById("app"));

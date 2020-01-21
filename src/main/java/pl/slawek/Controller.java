@@ -8,7 +8,7 @@ public class Controller {
 	@RequestMapping("/")
 	public String index() {
 		
-		return "index.html";
+		return "licznik.html";
 	}
 	
 }
